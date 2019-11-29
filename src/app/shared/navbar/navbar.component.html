@@ -1,0 +1,33 @@
+<div class="wrapper" *ngIf="isAuth">
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Grupo Boticário</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li [ngClass]="{active: activeRoute('purchases')}">
+                <a [routerLink]="['/purchases']"><i class="fas fa-money-bill-wave m-r-10"></i>Vendas</a>
+            </li>
+            <li [ngClass]="{active: activeRoute('informations')}">
+                <a [routerLink]="['/informations']"><i class="fas fa-info m-r-10"></i>Informações do Projeto</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <div id="topbar">
+            <p style="cursor: pointer;" class="pull-right m-r-15" (click)="logout()"><i class="fas fa-power-off"></i> Sair</p>
+            <p class="pull-right m-r-20">{{userInformations?.data?.name}}</p>
+        </div>
+
+        <div class="full-box">
+            <div class="box">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-container *ngIf="!isAuth">
+    <router-outlet></router-outlet>
+</ng-container>

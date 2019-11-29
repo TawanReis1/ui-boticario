@@ -1,0 +1,45 @@
+<app-loader class="full-size" [condition]="isLoading"></app-loader>
+
+<div class="row" *ngIf="!isLoading">
+    <div class="col-lg-12 m-b-30">
+        <h2>Editar venda</h2>
+    </div>
+
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label for="code">Código</label>
+            <input id="code" name="code" type="text" class="form-control" [(ngModel)]="purchase.code">
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label for="price">Preço (R$)</label>
+            <input id="price" name="price" type="text" class="form-control" [(ngModel)]="purchase.price" prefix="R$" mask="separator.2" thousandSeparator=",">
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label for="date">Data</label><br>
+            {{test}}
+            <dp-date-picker [(ngModel)]="purchase.purchaseDate" theme="dp-material" [config]="datePickerConfig"
+                mode="daytime"></dp-date-picker>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            <label for="code">Status</label>
+            <select id="status" name="status" class="form-control" [(ngModel)]="purchase.status">
+                <option value="APPROVED" [disabled]="user.document !== '15350946056'">Aprovado</option>
+                <option value="ANALYZING">Em Validação</option>
+                <option value="REPROVED">Reprovado</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="col-lg-12 m-t-60">
+        <div class=" pull-right">
+            <button class="btn btn-secundary m-r-15" (click)="cancel()">Cancelar</button>
+            <button class="btn btn-primary" (click)="updatePurchase()">Salvar</button>
+        </div>
+    </div>
+</div>

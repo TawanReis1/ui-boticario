@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-lg-12 m-b-30">
+        <h2>Nova venda</h2>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label for="code">Código</label>
+            <input id="code" name="code" type="text" class="form-control" [(ngModel)]="purchase.code">
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label for="price">Preço (R$)</label>
+            <input id="price" name="price" type="text" class="form-control" prefix="R$" mask="separator.2" thousandSeparator="," [(ngModel)]="purchase.price">
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="form-group">
+            <label for="date">Data</label><br>
+            <dp-date-picker [(ngModel)]="purchase.purchaseDate" theme="dp-material" [config]="datePickerConfig"
+                mode="daytime"></dp-date-picker>
+        </div>
+    </div>
+
+    <div class="col-lg-12 m-t-60">
+        <div class=" pull-right">
+            <button class="btn btn-secundary m-r-15" (click)="cancel()">Cancelar</button>
+            <button class="btn btn-primary" (click)="createPurchase()">Salvar</button>
+        </div>
+    </div>
+</div>
